@@ -20,6 +20,10 @@ run  = 'pnpm biome start'
 description = "Stops the Biome daemon server process"
 run = 'pnpm biome stop'
 
+[tasks.lint]
+description = "Run the linter on a set of files"
+run = 'pnpm biome check'
+
 [tasks.fmt]
 description = "Run the formatter on a set of files"
 run = 'pnpm biome format'
