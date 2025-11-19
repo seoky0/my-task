@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# my-task
 
-## Getting Started
+これは [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) でブートストラップされた [Next.js](https://nextjs.org) プロジェクトです。
 
-First, run the development server:
+## 技術スタック
+
+- **フレームワーク**: Next.js 16.0.3 (App Router)
+- **ライブラリ**: React 19.2.0
+- **言語**: TypeScript 5
+- **パッケージマネージャー**: pnpm
+- **リンター/フォーマッター**: Biome 2.2.0
+- **ランタイム管理**: mise
+
+## 必須要件
+
+- Node.js 24.11.1 (mise経由で自動インストール)
+- pnpm (mise経由で自動インストール)
+
+## 開発環境のセットアップ
+
+### 1. mise のインストール
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# macOS/Linux
+curl https://mise.run | sh
+
+# または Homebrew
+brew install mise
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. プロジェクトのセットアップ
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# mise が自動的に Node.js と pnpm をインストール
+mise install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# 依存関係のインストール
+mise run install
+# または
+pnpm install
+```
 
-## Learn More
+## はじめに
 
-To learn more about Next.js, take a look at the following resources:
+開発サーバーを起動します：
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ブラウザで [http://localhost:3000](http://localhost:3000) を開いて結果を確認してください。
 
-## Deploy on Vercel
+`app/page.tsx` を編集することでページの編集を開始できます。ファイルを編集すると、ページが自動的に更新されます。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 利用可能なコマンド
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 開発・ビルド
+
+```bash
+pnpm dev      # 開発サーバーを起動
+pnpm build    # プロダクションビルド
+pnpm start    # プロダクションサーバーを起動
+```
+
+### コード品質
+
+```bash
+pnpm lint     # Biomeでコードをチェック
+pnpm format   # Biomeでコードを自動整形
+```
+
+### mise タスク
+
+```bash
+mise run install       # 依存関係のインストール
+mise run build         # プロジェクトをビルド
+mise run biome-start   # Biomeデーモンを起動
+mise run biome-stop    # Biomeデーモンを停止
+mise run fmt           # フォーマッターを実行
+```
+
+## プロジェクト構成
+
+```
+my-task/
+├── app/              # Next.js App Router
+│   ├── layout.tsx   # ルートレイアウト
+│   └── page.tsx     # トップページ
+├── public/          # 静的ファイル
+├── biome.json       # Biome設定
+├── mise.toml        # mise設定とタスク定義
+├── next.config.ts   # Next.js設定
+├── tsconfig.json    # TypeScript設定
+└── package.json     # 依存関係とスクリプト
+```
+
+## 詳細情報
+
+Next.jsについてさらに学ぶには、以下のリソースをご覧ください：
+
+- [Next.js ドキュメント](https://nextjs.org/docs) - Next.jsの機能とAPIについて学ぶ
+- [Next.js チュートリアル](https://nextjs.org/learn) - インタラクティブなNext.jsチュートリアル
+
+[Next.js GitHubリポジトリ](https://github.com/vercel/next.js)もチェックしてみてください - フィードバックや貢献を歓迎します！
+
+## Vercelへのデプロイ
+
+Next.jsアプリをデプロイする最も簡単な方法は、Next.jsの作成者による [Vercelプラットフォーム](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) を使用することです。
+
+詳細については、[Next.jsデプロイメントドキュメント](https://nextjs.org/docs/app/building-your-application/deploying)をご覧ください。
